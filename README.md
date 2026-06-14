@@ -4,19 +4,21 @@ Aplicação fullstack de e-commerce com Node.js/Express + React/Vite.
 
 ## Stack
 
-| Camada    | Tecnologias                                     |
-|-----------|-------------------------------------------------|
-| Backend   | Node.js, Express, TypeScript, Prisma, PostgreSQL |
-| Frontend  | React 18, Vite, TypeScript, Tailwind CSS         |
-| Banco     | PostgreSQL 16 via Docker                        |
-| Auth      | JWT + bcryptjs                                  |
+| Camada   | Tecnologias                                      |
+|----------|--------------------------------------------------|
+| Backend  | Node.js, Express, TypeScript, Prisma, PostgreSQL |
+| Frontend | React 18, Vite, TypeScript, Tailwind CSS         |
+| Banco    | PostgreSQL 16 via Docker                         |
+| Auth     | JWT + bcryptjs                                   |
 
 ## Estrutura
 
 ```
 ecommerce/
 ├── backend/
-│   ├── prisma/schema.prisma   # Modelos: User, Product, Category, Order
+│   ├── prisma/
+│   │   ├── schema.prisma      # Modelos: User, Product, Category, Order
+│   │   └── seed.ts            # 16 produtos eletrônicos de exemplo
 │   └── src/
 │       ├── controllers/       # auth, product, category, order
 │       ├── middlewares/       # JWT auth, error handler
@@ -36,41 +38,64 @@ ecommerce/
 
 ## Setup
 
-### 1. Banco de dados
+### 1. Clone e variáveis de ambiente
 
 ```bash
+git clone https://github.com/anaclarasampaio/ecommerce.git
+cd ecommerce
 cp backend/.env.example backend/.env
+```
+
+Abra `backend/.env` e defina um valor para `JWT_SECRET`:
+
+```env
+JWT_SECRET=qualquer_string_secreta_aqui
+```
+
+### 2. Banco de dados
+
+```bash
 docker compose up -d
 ```
 
-### 2. Backend
+### 3. Backend
 
 ```bash
 cd backend
 npm install
-npm run prisma:migrate   # aplica as migrations
-npm run prisma:generate  # gera o client
-npm run dev              # http://localhost:3333
+npx prisma migrate deploy   # aplica as migrations existentes
+npm run seed                 # popula o banco com 16 produtos eletrônicos
+npm run dev                  # inicia em http://localhost:3333
 ```
 
-### 3. Frontend
+### 4. Frontend
+
+Abra um novo terminal:
 
 ```bash
 cd frontend
 npm install
-npm run dev              # http://localhost:5173
+npm run dev                  # inicia em http://localhost:5173
 ```
 
-O Vite faz proxy de `/api` para `localhost:3333`, então não é necessária configuração de CORS no desenvolvimento.
+Acesse **http://localhost:5173** no navegador.
+
+> **WSL2:** o navegador do Windows não acessa `localhost` do WSL diretamente.
+> Use o IP que aparecer em **Network** no terminal do Vite, ex: `http://172.19.x.x:5173`
+
+---
 
 ## Variáveis de ambiente (backend)
 
-| Variável       | Padrão                                               | Descrição          |
-|----------------|------------------------------------------------------|--------------------|
-| `PORT`         | `3333`                                               | Porta do servidor  |
-| `DATABASE_URL` | `postgresql://postgres:postgres@localhost:5432/ecommerce` | String de conexão  |
-| `JWT_SECRET`   | —                                                    | Chave JWT (obrigatória) |
-| `JWT_EXPIRES_IN` | `7d`                                               | Expiração do token |
+| Variável         | Padrão                                                    | Descrição               |
+|------------------|-----------------------------------------------------------|-------------------------|
+| `PORT`           | `3333`                                                    | Porta do servidor       |
+| `DATABASE_URL`   | `postgresql://postgres:postgres@localhost:5432/ecommerce` | String de conexão       |
+| `JWT_SECRET`     | —                                                         | Chave JWT (obrigatória) |
+| `JWT_EXPIRES_IN` | `7d`                                                      | Expiração do token      |
+| `DB_USER`        | `postgres`                                                | Usuário do banco        |
+| `DB_PASSWORD`    | `postgres`                                                | Senha do banco          |
+| `DB_NAME`        | `ecommerce`                                               | Nome do banco           |
 
 ## Endpoints da API
 
@@ -98,9 +123,9 @@ GET    /api/health
 
 ## Funcionalidades
 
-- Listagem de produtos com busca e paginação
+- Listagem de produtos com busca em tempo real
 - Modal de detalhe do produto
-- Carrinho de compras persistente na sessão (Context API)
+- Carrinho de compras com Context API (quantidade, total, drawer lateral)
 - Fluxo de checkout em dois passos com integração à API
 - Autenticação com JWT (registro e login)
 - Dark mode com persistência no localStorage
