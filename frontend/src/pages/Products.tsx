@@ -3,12 +3,14 @@ import { api } from '../services/api';
 import { Product, PaginatedResponse } from '../types';
 import { ProductCard } from '../components/ProductCard';
 import { ProductModal } from '../components/ProductModal';
+import { useCart } from '../contexts/CartContext';
 
 export function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState<Product | null>(null);
+  const { addItem } = useCart();
 
   useEffect(() => {
     const timer = setTimeout(fetchProducts, 300);
@@ -56,7 +58,7 @@ export function Products() {
         </div>
       )}
 
-      <ProductModal product={selected} onClose={() => setSelected(null)} />
+      <ProductModal product={selected} onClose={() => setSelected(null)} onAddToCart={addItem} />
     </div>
   );
 }
