@@ -1,4 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { GoSun } from 'react-icons/go';
+import { LuMoon } from 'react-icons/lu';
+import { FiShoppingCart } from 'react-icons/fi';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useTheme } from '../contexts/ThemeContext';
@@ -29,10 +32,10 @@ export function Navbar() {
 
             <button
               onClick={toggleTheme}
-              className="text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-lg"
+              className="text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               aria-label="Alternar tema"
             >
-              {theme === 'dark' ? '☀️' : '🌙'}
+              {theme === 'dark' ? <GoSun size={20} /> : <LuMoon size={20} />}
             </button>
 
             <button
@@ -40,7 +43,7 @@ export function Navbar() {
               className="relative text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               aria-label="Carrinho"
             >
-              <span className="text-xl">🛒</span>
+              <FiShoppingCart size={20} />
               {count > 0 && (
                 <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {count > 9 ? '9+' : count}
