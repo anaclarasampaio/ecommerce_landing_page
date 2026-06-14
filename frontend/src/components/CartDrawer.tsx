@@ -11,9 +11,9 @@ export function CartDrawer() {
     <>
       <div className="fixed inset-0 z-40 bg-black/40" onClick={closeCart} />
 
-      <aside className="fixed right-0 top-0 h-full w-full max-w-sm z-50 bg-white shadow-2xl flex flex-col">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
-          <h2 className="text-lg font-bold text-gray-900">
+      <aside className="fixed right-0 top-0 h-full w-full max-w-sm z-50 bg-white dark:bg-gray-900 shadow-2xl flex flex-col">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-gray-800">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">
             Carrinho{' '}
             {count > 0 && (
               <span className="ml-1 text-sm font-normal text-gray-400">({count} itens)</span>

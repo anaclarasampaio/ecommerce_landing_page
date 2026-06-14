@@ -12,7 +12,7 @@ export function ProductCard({ product, onClick }: Props) {
       tabIndex={0}
       onClick={onClick}
       onKeyDown={(e) => e.key === 'Enter' && onClick?.()}
-      className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group cursor-pointer"
+      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow group cursor-pointer"
     >
       <div className="aspect-square bg-gray-100 overflow-hidden">
         {product.imageUrl ? (
@@ -32,9 +32,9 @@ export function ProductCard({ product, onClick }: Props) {
         <span className="text-xs text-primary-600 font-medium uppercase tracking-wide">
           {product.category.name}
         </span>
-        <h3 className="mt-1 font-semibold text-gray-900 line-clamp-2">{product.name}</h3>
+        <h3 className="mt-1 font-semibold text-gray-900 dark:text-white line-clamp-2">{product.name}</h3>
         <div className="mt-2 flex items-center justify-between">
-          <span className="text-lg font-bold text-gray-900">
+          <span className="text-lg font-bold text-gray-900 dark:text-white">
             {Number(product.price).toLocaleString('pt-BR', {
               style: 'currency',
               currency: 'BRL',

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { CartDrawer } from './components/CartDrawer';
 import { Home } from './pages/Home';
@@ -12,6 +13,7 @@ import { Checkout } from './pages/Checkout';
 
 export default function App() {
   return (
+    <ThemeProvider>
     <AuthProvider>
       <CartProvider>
         <BrowserRouter>
@@ -28,5 +30,6 @@ export default function App() {
         </BrowserRouter>
       </CartProvider>
     </AuthProvider>
+    </ThemeProvider>
   );
 }

@@ -25,10 +25,10 @@ export function Home() {
             { icon: '🔒', title: 'Pagamento Seguro', desc: 'Suas informações protegidas' },
             { icon: '↩️', title: 'Devolução Fácil', desc: 'Até 30 dias após a compra' },
           ].map((item) => (
-            <div key={item.title} className="p-6 rounded-xl bg-gray-50">
+            <div key={item.title} className="p-6 rounded-xl bg-gray-100 dark:bg-gray-800">
               <div className="text-4xl mb-3">{item.icon}</div>
-              <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
-              <p className="text-gray-500 text-sm">{item.desc}</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{item.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">{item.desc}</p>
             </div>
           ))}
         </div>
