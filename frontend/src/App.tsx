@@ -4,6 +4,7 @@ import { CartProvider } from './contexts/CartContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { CartDrawer } from './components/CartDrawer';
+import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { Login } from './pages/Login';
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/orders" element={<Orders />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </CartProvider>
     </AuthProvider>

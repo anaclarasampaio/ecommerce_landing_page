@@ -106,7 +106,7 @@ export function CartDrawer() {
                   closeCart();
                   navigate('/checkout');
                 }}
-                className="w-full bg-primary-600 text-white py-3 rounded-xl hover:bg-primary-700 transition-colors font-semibold"
+                className="btn-primary w-full bg-gradient-to-r from-navy-800 to-navy-900 text-white py-3 font-semibold"
               >
                 Finalizar Compra
               </button>

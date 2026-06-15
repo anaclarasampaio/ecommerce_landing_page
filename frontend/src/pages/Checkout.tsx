@@ -68,7 +68,7 @@ export function Checkout() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 text-center px-4">
         <span className="text-6xl">✅</span>
-        <h1 className="text-2xl font-bold text-gray-900">Pedido realizado com sucesso!</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Pedido realizado com sucesso!</h1>
         <p className="text-gray-500">
           Seu pedido <span className="font-mono font-semibold">#{orderId.slice(-8).toUpperCase()}</span> foi
           confirmado com sucesso.

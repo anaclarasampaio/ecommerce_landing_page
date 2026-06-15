@@ -11,7 +11,7 @@ export function Home() {
           </p>
           <Link
             to="/products"
-            className="bg-white text-primary-600 font-semibold px-8 py-4 rounded-xl hover:bg-primary-50 transition-colors text-lg inline-block"
+            className="btn-primary bg-white text-navy-900 font-semibold px-8 py-4 text-lg inline-block"
           >
             Ver Produtos
           </Link>
@@ -21,7 +21,7 @@ export function Home() {
       <section className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {[
-            { icon: '🚚', title: 'Frete Grátis', desc: 'Em compras acima de R$ 99,00' },
+            { icon: '🚚', title: 'Frete Grátis', desc: 'Em compras acima de R$ 99,99git ' },
             { icon: '🔒', title: 'Pagamento Seguro', desc: 'Suas informações protegidas' },
             { icon: '↩️', title: 'Devolução Fácil', desc: 'Até 30 dias após a compra' },
           ].map((item) => (

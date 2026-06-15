@@ -25,22 +25,22 @@ export function Navbar() {
   }
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800 transition-colors">
+    <nav className="bg-navy-900 shadow-sm border-b border-navy-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <Link to="/" className="text-xl font-bold text-primary-600 dark:text-primary-400" onClick={closeMenu}>
+          <Link to="/" className="text-xl text-white tracking-widest" style={{ fontFamily: 'Raleway, sans-serif' }} onClick={closeMenu}>
             Ecommerce
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-6">
-            <Link to="/products" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+            <Link to="/products" className="text-gray-200 hover:text-primary-400 transition-colors">
               Produtos
             </Link>
 
             <button
               onClick={toggleTheme}
-              className="text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="btn-icon text-gray-300 hover:text-primary-400"
               aria-label="Alternar tema"
             >
               {theme === 'dark' ? <GoSun size={20} /> : <LuMoon size={20} />}
@@ -48,12 +48,12 @@ export function Navbar() {
 
             <button
               onClick={openCart}
-              className="relative text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="btn-icon relative text-gray-200 hover:text-primary-400"
               aria-label="Carrinho"
             >
               <FiShoppingCart size={20} />
               {count > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                <span className="absolute -top-2 -right-2 bg-white text-navy-900 text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {count > 9 ? '9+' : count}
                 </span>
               )}
@@ -61,20 +61,23 @@ export function Navbar() {
 
             {isAuthenticated ? (
               <>
-                <Link to="/orders" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <Link to="/orders" className="text-gray-200 hover:text-primary-400 transition-colors">
                   Meus Pedidos
                 </Link>
-                <span className="text-sm text-gray-500 dark:text-gray-400">{user?.name}</span>
-                <button onClick={handleLogout} className="text-sm text-red-500 hover:text-red-700 transition-colors">
+                <span className="text-sm text-gray-300">{user?.name}</span>
+                <button onClick={handleLogout} className="text-sm text-red-400 hover:text-red-300 transition-colors">
                   Sair
                 </button>
               </>
             ) : (
               <>
-                <Link to="/login" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <Link to="/login" className="text-gray-200 hover:text-primary-400 transition-colors">
                   Entrar
                 </Link>
-                <Link to="/register" className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm">
+                <Link
+                  to="/register"
+                  className="btn-primary bg-white text-navy-900 font-semibold px-4 py-2 text-sm"
+                >
                   Cadastrar
                 </Link>
               </>
@@ -85,7 +88,7 @@ export function Navbar() {
           <div className="flex sm:hidden items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="btn-icon text-gray-300 hover:text-primary-400"
               aria-label="Alternar tema"
             >
               {theme === 'dark' ? <GoSun size={20} /> : <LuMoon size={20} />}
@@ -93,12 +96,12 @@ export function Navbar() {
 
             <button
               onClick={openCart}
-              className="relative text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="btn-icon relative text-gray-200 hover:text-primary-400"
               aria-label="Carrinho"
             >
               <FiShoppingCart size={20} />
               {count > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                <span className="absolute -top-2 -right-2 bg-white text-navy-900 text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {count > 9 ? '9+' : count}
                 </span>
               )}
@@ -106,7 +109,7 @@ export function Navbar() {
 
             <button
               onClick={() => setMenuOpen(prev => !prev)}
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="btn-icon text-gray-200 hover:text-primary-400"
               aria-label="Menu"
             >
               {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
@@ -117,46 +120,31 @@ export function Navbar() {
 
       {/* Mobile dropdown menu */}
       {menuOpen && (
-        <div className="sm:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+        <div className="sm:hidden border-t border-navy-800 bg-navy-900">
           <div className="flex flex-col px-4 py-3 gap-4">
-            <Link
-              to="/products"
-              onClick={closeMenu}
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-            >
+            <Link to="/products" onClick={closeMenu} className="text-gray-200 hover:text-primary-400 transition-colors">
               Produtos
             </Link>
 
             {isAuthenticated ? (
               <>
-                <Link
-                  to="/orders"
-                  onClick={closeMenu}
-                  className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
+                <Link to="/orders" onClick={closeMenu} className="text-gray-200 hover:text-primary-400 transition-colors">
                   Meus Pedidos
                 </Link>
-                <span className="text-sm text-gray-500 dark:text-gray-400">{user?.name}</span>
-                <button
-                  onClick={handleLogout}
-                  className="text-left text-sm text-red-500 hover:text-red-700 transition-colors"
-                >
+                <span className="text-sm text-gray-300">{user?.name}</span>
+                <button onClick={handleLogout} className="text-left text-sm text-red-400 hover:text-red-300 transition-colors">
                   Sair
                 </button>
               </>
             ) : (
               <>
-                <Link
-                  to="/login"
-                  onClick={closeMenu}
-                  className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
+                <Link to="/login" onClick={closeMenu} className="text-gray-200 hover:text-primary-400 transition-colors">
                   Entrar
                 </Link>
                 <Link
                   to="/register"
                   onClick={closeMenu}
-                  className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm text-center"
+                  className="bg-white text-navy-900 font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm text-center"
                 >
                   Cadastrar
                 </Link>

@@ -90,7 +90,7 @@ export function ProductModal({ product, onClose, onAddToCart }: Props) {
                     onAddToCart(product);
                     onClose();
                   }}
-                  className="w-full bg-primary-600 text-white py-3 rounded-xl hover:bg-primary-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary w-full bg-gradient-to-r from-navy-800 to-navy-900 text-white py-3 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Adicionar ao carrinho
                 </button>
