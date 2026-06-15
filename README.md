@@ -1,4 +1,4 @@
-# Ecommerce Fullstack
+# Ecommerce 
 
 Aplicação fullstack de e-commerce com Node.js/Express + React/Vite.
 
